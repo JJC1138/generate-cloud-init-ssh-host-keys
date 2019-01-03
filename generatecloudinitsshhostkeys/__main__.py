@@ -3,7 +3,9 @@ import shutil
 import subprocess
 import sys
 import tempfile
-import yaml
+
+import ruamel.yaml
+from ruamel.yaml.scalarstring import PreservedScalarString
 
 def run(temp_folder_name):
     def generate_keys(key_type):
@@ -22,10 +24,10 @@ def run(temp_folder_name):
     
     for key_type in ['ecdsa', 'ed25519', 'rsa']:
         (private_key, public_key) = generate_keys(key_type)
-        keys.append({('%s_private' % key_type): private_key})
-        keys.append({('%s_public' % key_type): public_key})
+        keys.append({('%s_private' % key_type): PreservedScalarString(private_key)})
+        keys.append({('%s_public' % key_type): PreservedScalarString(public_key)})
     
-    yaml.dump({'ssh_keys': keys}, sys.stdout, default_style='|')
+    ruamel.yaml.YAML().dump({'ssh_keys': keys}, sys.stdout)
 
 def main():
     temp_folder_name = tempfile.mkdtemp(prefix='generate-cloud-init-ssh-host-keys')

@@ -7,5 +7,5 @@ setuptools.setup(
     entry_points = {'console_scripts': [
         'generate-cloud-init-ssh-host-keys = generatecloudinitsshhostkeys.__main__:main',
     ]},
-    install_requires = ['pyyaml'],
+    install_requires = ['ruamel.yaml'],
 )
