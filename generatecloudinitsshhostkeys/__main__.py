@@ -8,4 +8,7 @@ def main():
         sys.argv.append('-h')
     args = arg_parser.parse_args()
     
-    print(args.config_file_name)
+    config = "test content\n"
+    
+    with open(args.config_file_name, 'at') as config_file:
+        config_file.write(config)
