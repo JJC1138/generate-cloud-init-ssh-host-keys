@@ -12,4 +12,4 @@ Simply call the program and the keys are output in cloud-init compatible format 
 generate-cloud-init-ssh-host-keys >>my-cloud-init.yaml
 ```
 
-SSH host keys are generated for all supported key types.
+SSH host keys are generated for the `ecdsa`, `ed25519`, and `rsa` key types.
