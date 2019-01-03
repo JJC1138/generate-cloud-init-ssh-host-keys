@@ -20,12 +20,12 @@ def run(temp_folder_name):
         
         return (private_key, public_key)
     
-    keys = []
+    keys = {}
     
     for key_type in ['ecdsa', 'ed25519', 'rsa']:
         (private_key, public_key) = generate_keys(key_type)
-        keys.append({('%s_private' % key_type): PreservedScalarString(private_key)})
-        keys.append({('%s_public' % key_type): PreservedScalarString(public_key)})
+        keys['%s_private' % key_type] = PreservedScalarString(private_key)
+        keys['%s_public' % key_type] = PreservedScalarString(public_key)
     
     ruamel.yaml.YAML().dump({'ssh_keys': keys}, sys.stdout)
 
