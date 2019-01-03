@@ -1,0 +1,3 @@
+dev-venv
+*.egg-info
+__pycache__
