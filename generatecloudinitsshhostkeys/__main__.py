@@ -25,7 +25,7 @@ def run(temp_folder_name):
         keys.append({('%s_private' % key_type): private_key})
         keys.append({('%s_public' % key_type): public_key})
     
-    yaml.dump({'ssh_keys': keys}, sys.stdout)
+    yaml.dump({'ssh_keys': keys}, sys.stdout, default_style='|')
 
 def main():
     temp_folder_name = tempfile.mkdtemp(prefix='generate-cloud-init-ssh-host-keys')
